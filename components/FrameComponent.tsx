@@ -1,25 +1,52 @@
 import React, { memo } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
 import StyleFilledStateEnabledS from "./StyleFilledStateEnabledS";
-import { Color, Padding, FontFamily, FontSize, Border } from "../GlobalStyles";
+import {
+  FontFamily,
+  FontSize,
+  Color,
+  Padding,
+  StyleVariable,
+  Border,
+} from "../GlobalStyles";
 
 const FrameComponent = memo(() => {
   return (
-    <View style={[styles.loginSocialNetworkFrame, styles.stateLayerFlexBox1]}>
-      <View style={styles.loginSocialNetworkSet}>
-        <Text style={styles.iniciaSesinCon}>Inicia sesión con:</Text>
-        <View style={[styles.segmentedButton, styles.stateLayerFlexBox]}>
+    <View style={[styles.loginSocialNetworkFrame, styles.loginSpaceBlock]}>
+      <Pressable style={[styles.button, styles.buttonFlexBox]}>
+        <Image
+          style={[styles.starIcon, styles.iconLayout]}
+          contentFit="cover"
+          source={require("../assets/star.png")}
+        />
+        <Text style={styles.button1}>Button</Text>
+        <Image
+          style={[styles.xIcon, styles.iconLayout]}
+          contentFit="cover"
+          source={require("../assets/x.png")}
+        />
+      </Pressable>
+      <View style={[styles.loginSocialNetworkSet, styles.loginSpaceBlock]}>
+        <Text style={[styles.iniciaSesinCon, styles.labelTextTypo]}>
+          Inicia sesión con:
+        </Text>
+        <View style={styles.segmentedButton}>
           <View style={styles.segmentFlexBox}>
             <View style={[styles.container, styles.containerFlexBox]}>
-              <View style={[styles.stateLayer, styles.stateLayerFlexBox]}>
-                <Text style={styles.labelText}>Google</Text>
+              <View style={[styles.stateLayer, styles.buttonFlexBox]}>
+                <Text style={[styles.labelText, styles.labelTextTypo]}>
+                  Google
+                </Text>
               </View>
             </View>
           </View>
           <View style={[styles.segmentEnd, styles.segmentFlexBox]}>
             <View style={[styles.container1, styles.containerFlexBox]}>
-              <View style={[styles.stateLayer, styles.stateLayerFlexBox]}>
-                <Text style={styles.labelText}>Facebook</Text>
+              <View style={[styles.stateLayer, styles.buttonFlexBox]}>
+                <Text style={[styles.labelText, styles.labelTextTypo]}>
+                  Facebook
+                </Text>
               </View>
             </View>
           </View>
@@ -39,22 +66,34 @@ const FrameComponent = memo(() => {
 });
 
 const styles = StyleSheet.create({
-  stateLayerFlexBox1: {
-    flex: 1,
-    alignSelf: "stretch",
+  loginSpaceBlock: {
+    marginTop: 20,
+    alignItems: "center",
   },
-  stateLayerFlexBox: {
-    flexDirection: "row",
+  buttonFlexBox: {
     justifyContent: "center",
     alignItems: "center",
   },
-  containerFlexBox: {
+  iconLayout: {
+    height: 16,
+    width: 16,
     overflow: "hidden",
-    borderWidth: 1,
+  },
+  labelTextTypo: {
+    textAlign: "center",
+    fontFamily: FontFamily.m3TitleMedium,
+    fontWeight: "500",
+    lineHeight: 24,
+    letterSpacing: 0,
+    fontSize: FontSize.m3TitleMedium_size,
+  },
+  containerFlexBox: {
     borderColor: Color.greenA1,
-    borderStyle: "solid",
     backgroundColor: Color.whiteA1,
     justifyContent: "center",
+    overflow: "hidden",
+    borderWidth: 1,
+    borderStyle: "solid",
     alignItems: "center",
     flex: 1,
     alignSelf: "stretch",
@@ -62,11 +101,36 @@ const styles = StyleSheet.create({
   segmentFlexBox: {
     paddingVertical: Padding.p_9xs,
     paddingHorizontal: 0,
-    flexDirection: "row",
     height: 48,
     justifyContent: "center",
+    flexDirection: "row",
     alignItems: "center",
     flex: 1,
+  },
+  starIcon: {
+    display: "none",
+  },
+  button1: {
+    lineHeight: 16,
+    fontFamily: FontFamily.singleLineBodyBase,
+    color: Color.whiteA1,
+    textAlign: "left",
+    marginLeft: 8,
+    fontSize: FontSize.m3TitleMedium_size,
+  },
+  xIcon: {
+    marginLeft: 8,
+  },
+  button: {
+    borderRadius: StyleVariable.radius200,
+    backgroundColor: Color.backgroundBrandDefault,
+    borderColor: Color.backgroundBrandDefault,
+    padding: StyleVariable.space300,
+    flexDirection: "row",
+    justifyContent: "center",
+    overflow: "hidden",
+    borderWidth: 1,
+    borderStyle: "solid",
   },
   iniciaSesinCon: {
     color: Color.textDefaultTertiary,
@@ -74,26 +138,16 @@ const styles = StyleSheet.create({
     width: 168,
     height: 19,
     justifyContent: "center",
-    textAlign: "center",
-    fontFamily: FontFamily.m3TitleMedium,
-    fontWeight: "500",
-    lineHeight: 24,
-    letterSpacing: 0,
-    fontSize: FontSize.m3TitleMedium_size,
     alignItems: "center",
   },
   labelText: {
     color: Color.greenA1,
-    textAlign: "center",
-    fontFamily: FontFamily.m3TitleMedium,
-    fontWeight: "500",
-    lineHeight: 24,
-    letterSpacing: 0,
-    fontSize: FontSize.m3TitleMedium_size,
   },
   stateLayer: {
     paddingHorizontal: Padding.p_xs,
     paddingVertical: Padding.p_3xs,
+    flexDirection: "row",
+    justifyContent: "center",
     flex: 1,
     alignSelf: "stretch",
   },
@@ -112,7 +166,9 @@ const styles = StyleSheet.create({
     width: 207,
     marginTop: 7,
     height: 48,
+    justifyContent: "center",
     flexDirection: "row",
+    alignItems: "center",
   },
   loginSocialNetworkSet: {
     borderRadius: Border.br_3xs,
@@ -121,14 +177,13 @@ const styles = StyleSheet.create({
     height: 90,
     paddingHorizontal: Padding.p_mini,
     paddingVertical: Padding.p_7xs,
-    alignItems: "center",
   },
   loginSocialNetworkFrame: {
     justifyContent: "flex-end",
     paddingTop: Padding.p_81xl,
     paddingBottom: Padding.p_31xl,
-    marginTop: 20,
-    alignItems: "center",
+    flex: 1,
+    alignSelf: "stretch",
   },
 });
 

@@ -6,9 +6,9 @@ import { TextInput, Button } from "react-native-paper";
 import FrameComponent from "../components/FrameComponent";
 import {
   StyleVariable,
+  Color,
   FontFamily,
   FontSize,
-  Color,
   Padding,
   Border,
 } from "../GlobalStyles";
@@ -36,24 +36,25 @@ const LoginScreen = () => {
         <Text style={styles.inicioDeSesin}>Inicio de Sesión</Text>
         <View style={styles.inputSelctFieldFrame}>
           <TextInput
-            style={styles.inputLayout}
+            style={styles.emailInputField}
             mode="outlined"
             placeholderTextColor="#b3b3b3"
+            outlineColor="#fff"
             theme={{
               fonts: {
-                regular: { fontFamily: "Roboto", fontWeight: "Regular" },
+                regular: { fontFamily: "Roboto", fontWeight: "Medium" },
               },
-              colors: { text: "#b3b3b3" },
+              colors: { text: "#69a86c" },
             }}
           />
-          <View style={[styles.passwordInputField, styles.inputLayout]}>
+          <View style={styles.passwordInputField}>
             <Text style={styles.label}>
               Ingresa tu correo electrónico registrado:
             </Text>
-            <Text style={[styles.description, styles.errorTypo]}>
+            <Text style={[styles.description, styles.errorSpaceBlock]}>
               Description
             </Text>
-            <View style={[styles.input, styles.inputBorder]}>
+            <View style={[styles.input, styles.inputSpaceBlock]}>
               <Text style={[styles.value, styles.valueClr]}>
                 Ingresa tu contraseña
               </Text>
@@ -78,6 +79,16 @@ const LoginScreen = () => {
           >
             Recordar Contraseña
           </Button>
+        </View>
+        <View style={styles.inputField}>
+          <Text style={[styles.label1, styles.errorTypo]}>Label</Text>
+          <Text style={[styles.description, styles.errorSpaceBlock]}>
+            Description
+          </Text>
+          <View style={[styles.input1, styles.inputSpaceBlock]}>
+            <Text style={[styles.value1, styles.errorTypo]}>Value</Text>
+          </View>
+          <Text style={[styles.error, styles.errorTypo]}>Error</Text>
         </View>
         <FrameComponent />
         <View style={[styles.footerFrame, styles.frameSpaceBlock]}>
@@ -122,25 +133,34 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     alignItems: "center",
   },
-  inputLayout: {
-    borderRadius: StyleVariable.cornerFull,
-    alignSelf: "stretch",
-  },
-  errorTypo: {
-    fontFamily: FontFamily.bodyBase,
-    lineHeight: 22,
+  errorSpaceBlock: {
     marginTop: 8,
+    lineHeight: 22,
     display: "none",
-    fontSize: FontSize.m3TitleMedium_size,
-    textAlign: "left",
   },
-  inputBorder: {
+  inputSpaceBlock: {
+    minWidth: 240,
+    paddingVertical: StyleVariable.space300,
+    paddingHorizontal: StyleVariable.space400,
+    borderColor: Color.borderDefaultDefault,
+    backgroundColor: Color.backgroundDefaultDefault,
+    flexDirection: "row",
     borderWidth: 1,
     borderStyle: "solid",
+    marginTop: 8,
+    alignSelf: "stretch",
+    alignItems: "center",
+    overflow: "hidden",
   },
   valueClr: {
     color: Color.textDefaultTertiary,
     letterSpacing: 1,
+    textAlign: "left",
+  },
+  errorTypo: {
+    color: Color.textDefaultDefault,
+    fontFamily: FontFamily.singleLineBodyBase,
+    fontSize: FontSize.m3TitleMedium_size,
     textAlign: "left",
   },
   frameSpaceBlock: {
@@ -189,6 +209,10 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontFamily: FontFamily.m3BodyLarge,
   },
+  emailInputField: {
+    width: 370,
+    borderRadius: StyleVariable.cornerFull,
+  },
   label: {
     letterSpacing: 0,
     color: Color.gRAY88,
@@ -202,7 +226,10 @@ const styles = StyleSheet.create({
   },
   description: {
     color: Color.textDefaultSecondary,
+    fontFamily: FontFamily.singleLineBodyBase,
     marginTop: 8,
+    fontSize: FontSize.m3TitleMedium_size,
+    textAlign: "left",
     alignSelf: "stretch",
   },
   value: {
@@ -215,23 +242,16 @@ const styles = StyleSheet.create({
   },
   input: {
     borderRadius: StyleVariable.radiusFull,
-    backgroundColor: Color.backgroundDefaultDefault,
-    borderColor: Color.borderDefaultDefault,
-    paddingHorizontal: StyleVariable.space400,
-    paddingVertical: StyleVariable.space300,
-    minWidth: 240,
-    flexDirection: "row",
-    marginTop: 8,
-    alignSelf: "stretch",
-    alignItems: "center",
-    overflow: "hidden",
   },
   error: {
-    color: Color.textDefaultDefault,
     marginTop: 8,
+    lineHeight: 22,
+    display: "none",
   },
   passwordInputField: {
+    borderRadius: StyleVariable.cornerFull,
     marginTop: 20,
+    alignSelf: "stretch",
   },
   inputSelctFieldFrame: {
     padding: Padding.p_3xs,
@@ -251,10 +271,31 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 1,
     borderStyle: "solid",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 0,
+      height: 16,
+    },
+    shadowColor: "rgba(12, 12, 13, 0.1)",
   },
   loginButtonFrame: {
     alignSelf: "stretch",
     alignItems: "center",
+  },
+  label1: {
+    lineHeight: 22,
+    color: Color.textDefaultDefault,
+    alignSelf: "stretch",
+  },
+  value1: {
+    lineHeight: 16,
+    flex: 1,
+  },
+  input1: {
+    borderRadius: StyleVariable.radius200,
+  },
+  inputField: {
+    marginTop: 20,
   },
   logoCloudIceIcon: {
     width: 130,
@@ -278,6 +319,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "flex-end",
     flexDirection: "row",
+    paddingHorizontal: 0,
   },
   loginBackgroundA1: {
     borderTopLeftRadius: Border.br_14xl,
@@ -295,7 +337,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     flex: 1,
-    overflow: "hidden",
   },
 });
 

@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   errorTypo: {
     marginTop: 8,
-    fontFamily: FontFamily.bodyBase,
+    fontFamily: FontFamily.singleLineBodyBase,
     lineHeight: 22,
     display: "none",
     fontSize: FontSize.m3TitleMedium_size,
