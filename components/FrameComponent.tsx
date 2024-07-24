@@ -1,10 +1,13 @@
 import React, { memo } from "react";
-import { Text, StyleSheet, View } from "react-native";
-import { Padding, FontFamily, FontSize, Color, Border } from "../GlobalStyles";
+import { StyleProp, ViewStyle, Text, StyleSheet, View } from "react-native";
 
-const FrameComponent = memo(() => {
+export type FrameComponentType = {
+  style?: StyleProp<ViewStyle>;
+};
+
+const FrameComponent = memo(({ style }: FrameComponentType) => {
   return (
-    <View style={styles.loginSocialNetworkFrame}>
+    <View style={[styles.loginSocialNetworkFrame, style]}>
       <View style={styles.loginSocialNetworkSet}>
         <Text style={styles.iniciaSesinCon}>Inicia sesión con:</Text>
         <View style={styles.segmentedButton}>
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   stateFlexBox: {
-    paddingVertical: Padding.p_3xs,
+    paddingVertical: 10,
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
@@ -53,14 +56,14 @@ const styles = StyleSheet.create({
   },
   labelTypo: {
     textAlign: "center",
-    fontFamily: FontFamily.m3LabelMedium,
+    fontFamily: "Roboto-Medium",
     fontWeight: "500",
     lineHeight: 24,
     letterSpacing: 0,
-    fontSize: FontSize.bodyBase_size,
+    fontSize: 16,
   },
   segmentFlexBox: {
-    paddingVertical: Padding.p_9xs,
+    paddingVertical: 4,
     paddingHorizontal: 0,
     flex: 1,
     flexDirection: "row",
@@ -69,43 +72,43 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   iniciaSesinCon: {
-    color: Color.textDefaultTertiary,
+    color: "#b3b3b3",
     display: "flex",
     width: 168,
     height: 19,
     justifyContent: "center",
     textAlign: "center",
-    fontFamily: FontFamily.m3LabelMedium,
+    fontFamily: "Roboto-Medium",
     fontWeight: "500",
     lineHeight: 24,
     letterSpacing: 0,
-    fontSize: FontSize.bodyBase_size,
+    fontSize: 16,
     alignItems: "center",
   },
   labelText: {
-    color: Color.greenA1,
+    color: "#76abae",
   },
   stateLayer: {
-    paddingHorizontal: Padding.p_xs,
+    paddingHorizontal: 12,
   },
   container: {
-    borderTopLeftRadius: Border.br_81xl,
-    borderBottomLeftRadius: Border.br_81xl,
+    borderTopLeftRadius: 100,
+    borderBottomLeftRadius: 100,
     borderWidth: 1,
-    borderColor: Color.greenA1,
+    borderColor: "#76abae",
     borderStyle: "solid",
-    backgroundColor: Color.wHITEF5,
+    backgroundColor: "#f5f5f5",
     overflow: "hidden",
     flex: 1,
     alignSelf: "stretch",
   },
   container1: {
-    borderTopRightRadius: Border.br_81xl,
-    borderBottomRightRadius: Border.br_81xl,
+    borderTopRightRadius: 100,
+    borderBottomRightRadius: 100,
     borderWidth: 1,
-    borderColor: Color.greenA1,
+    borderColor: "#76abae",
     borderStyle: "solid",
-    backgroundColor: Color.wHITEF5,
+    backgroundColor: "#f5f5f5",
     overflow: "hidden",
     flex: 1,
     alignSelf: "stretch",
@@ -122,19 +125,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   loginSocialNetworkSet: {
-    borderRadius: Border.br_3xs,
-    backgroundColor: Color.backgroundGreyA1,
+    borderRadius: 10,
+    backgroundColor: "#e9e9e9",
     width: 300,
     height: 90,
-    paddingHorizontal: Padding.p_mini,
-    paddingVertical: Padding.p_7xs,
+    paddingHorizontal: 15,
+    paddingVertical: 6,
     alignItems: "center",
   },
   labelText2: {
-    color: Color.wHITEF5,
+    color: "#f5f5f5",
   },
   stateLayer2: {
-    paddingHorizontal: Padding.p_5xl,
+    paddingHorizontal: 24,
   },
   registerButtonA1: {
     shadowColor: "rgba(12, 12, 13, 0.1)",
@@ -145,17 +148,16 @@ const styles = StyleSheet.create({
     shadowRadius: 32,
     elevation: 32,
     shadowOpacity: 1,
-    borderRadius: Border.br_81xl,
-    backgroundColor: Color.greenA1,
+    borderRadius: 100,
+    backgroundColor: "#76abae",
     height: 24,
     marginTop: 20,
   },
   loginSocialNetworkFrame: {
     justifyContent: "flex-end",
-    paddingHorizontal: Padding.p_3xs,
-    paddingTop: Padding.p_181xl,
-    paddingBottom: Padding.p_31xl,
-    marginTop: 20,
+    paddingHorizontal: 10,
+    paddingTop: 200,
+    paddingBottom: 50,
     alignItems: "center",
     alignSelf: "stretch",
   },

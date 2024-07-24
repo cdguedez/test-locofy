@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 import { Text, StyleSheet, View } from "react-native";
-import { Padding, Border, FontSize, FontFamily, Color } from "../GlobalStyles";
 
 const InputFieldFrame = memo(() => {
   return (
@@ -28,7 +27,7 @@ const InputFieldFrame = memo(() => {
 
 const styles = StyleSheet.create({
   stateLayerFlexBox: {
-    paddingVertical: Padding.p_3xs,
+    paddingVertical: 10,
     justifyContent: "center",
     alignSelf: "stretch",
     alignItems: "center",
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     height: 40,
     width: 250,
-    borderRadius: Border.br_81xl,
+    borderRadius: 100,
     shadowOpacity: 1,
     elevation: 32,
     shadowRadius: 32,
@@ -51,39 +50,39 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   registrarmeCon: {
-    fontSize: FontSize.bodyBase_size,
+    fontSize: 16,
     letterSpacing: 0,
     lineHeight: 24,
     fontWeight: "500",
-    fontFamily: FontFamily.m3LabelMedium,
-    color: Color.gRAYC1,
+    fontFamily: "Roboto-Medium",
+    color: "#c1c1c1",
     textAlign: "left",
   },
   labelText: {
-    fontSize: FontSize.m3TitleLarge_size,
+    fontSize: 22,
     lineHeight: 28,
-    fontFamily: FontFamily.m3TitleLarge,
-    color: Color.wHITEF5,
+    fontFamily: "Roboto-Regular",
+    color: "#f5f5f5",
     textAlign: "center",
   },
   stateLayer: {
     flex: 1,
     flexDirection: "row",
-    paddingHorizontal: Padding.p_5xl,
+    paddingHorizontal: 24,
   },
   registerPatientButtonA1: {
-    backgroundColor: Color.purpleA1,
+    backgroundColor: "#946fc3",
   },
   registerMedicalButtonA1: {
-    backgroundColor: Color.blueA1,
+    backgroundColor: "#6f96c3",
   },
   registerPatientMedicalSet: {
-    borderRadius: Border.br_3xs,
-    backgroundColor: Color.backgroundGreyA1,
+    borderRadius: 10,
+    backgroundColor: "#e9e9e9",
     width: 330,
     height: 160,
-    paddingHorizontal: Padding.p_21xl,
-    paddingVertical: Padding.p_7xs,
+    paddingHorizontal: 40,
+    paddingVertical: 6,
     alignItems: "center",
   },
   inputSelctFieldFrame: {
