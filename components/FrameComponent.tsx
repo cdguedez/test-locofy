@@ -1,33 +1,56 @@
 import React, { memo } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Text, StyleSheet, TextInput, View, Pressable } from "react-native";
 import { Image } from "expo-image";
-import StyleFilledStateEnabledS from "./StyleFilledStateEnabledS";
 import {
   FontFamily,
   FontSize,
+  StyleVariable,
   Color,
   Padding,
-  StyleVariable,
   Border,
 } from "../GlobalStyles";
 
 const FrameComponent = memo(() => {
   return (
-    <View style={[styles.loginSocialNetworkFrame, styles.loginSpaceBlock]}>
+    <View style={[styles.loginSocialNetworkFrame, styles.loginFlexBox]}>
+      <View style={styles.inputFieldTest2}>
+        <Text style={[styles.label, styles.labelTypo]}>Label Test 2</Text>
+        <Text style={[styles.description, styles.errorTypo]}>Description</Text>
+        <TextInput
+          style={[styles.input, styles.inputFlexBox]}
+          placeholder="Value"
+          keyboardType="email-address"
+          autoCapitalize="sentences"
+          placeholderTextColor="#b3b3b3"
+        />
+        <Text style={[styles.error, styles.errorTypo]}>Error</Text>
+      </View>
+      <View style={styles.inputFieldTest21}>
+        <Text style={[styles.label1, styles.labelTypo]}>Label Test 1</Text>
+        <Text style={[styles.description, styles.errorTypo]}>Description</Text>
+        <TextInput
+          style={[styles.input1, styles.inputSpaceBlock]}
+          placeholder="Value"
+          keyboardType="email-address"
+          autoCapitalize="sentences"
+          placeholderTextColor="#1e1e1e"
+        />
+        <Text style={[styles.error, styles.errorTypo]}>Error</Text>
+      </View>
       <Pressable style={[styles.button, styles.buttonFlexBox]}>
         <Image
           style={[styles.starIcon, styles.iconLayout]}
           contentFit="cover"
           source={require("../assets/star.png")}
         />
-        <Text style={styles.button1}>Button</Text>
+        <Text style={[styles.button1, styles.labelTypo]}>Button</Text>
         <Image
           style={[styles.xIcon, styles.iconLayout]}
           contentFit="cover"
           source={require("../assets/x.png")}
         />
       </Pressable>
-      <View style={[styles.loginSocialNetworkSet, styles.loginSpaceBlock]}>
+      <View style={[styles.loginSocialNetworkSet, styles.loginFlexBox]}>
         <Text style={[styles.iniciaSesinCon, styles.labelTextTypo]}>
           Inicia sesión con:
         </Text>
@@ -52,22 +75,45 @@ const FrameComponent = memo(() => {
           </View>
         </View>
       </View>
-      <StyleFilledStateEnabledS
-        labelText="¿No tienes cuenta? Registrate aquí"
-        styleFilledStateEnabledSPosition="unset"
-        styleFilledStateEnabledSBackgroundColor="#76abae"
-        styleFilledStateEnabledSElevation={32}
-        styleFilledStateEnabledSMarginTop={20}
-        styleFilledStateEnabledSHeight={24}
-        styleFilledStateEnabledSWidth="unset"
-      />
     </View>
   );
 });
 
 const styles = StyleSheet.create({
-  loginSpaceBlock: {
+  loginFlexBox: {
+    alignItems: "center",
     marginTop: 20,
+  },
+  labelTypo: {
+    textAlign: "left",
+    fontFamily: FontFamily.singleLineBodyBase,
+    fontSize: FontSize.m3TitleMedium_size,
+  },
+  errorTypo: {
+    marginTop: 8,
+    display: "none",
+    textAlign: "left",
+    fontFamily: FontFamily.singleLineBodyBase,
+    lineHeight: 22,
+    fontSize: FontSize.m3TitleMedium_size,
+  },
+  inputFlexBox: {
+    flex: 1,
+    flexDirection: "row",
+    alignSelf: "stretch",
+  },
+  inputSpaceBlock: {
+    minWidth: 240,
+    paddingVertical: StyleVariable.space3001,
+    paddingHorizontal: StyleVariable.space4001,
+    borderColor: Color.borderDefaultDefault,
+    backgroundColor: Color.backgroundDefaultDefault,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderStyle: "solid",
+    marginTop: 8,
+    fontFamily: FontFamily.singleLineBodyBase,
+    fontSize: FontSize.m3TitleMedium_size,
     alignItems: "center",
   },
   buttonFlexBox: {
@@ -91,11 +137,11 @@ const styles = StyleSheet.create({
     borderColor: Color.greenA1,
     backgroundColor: Color.whiteA1,
     justifyContent: "center",
+    flex: 1,
     overflow: "hidden",
     borderWidth: 1,
     borderStyle: "solid",
     alignItems: "center",
-    flex: 1,
     alignSelf: "stretch",
   },
   segmentFlexBox: {
@@ -103,19 +149,72 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     height: 48,
     justifyContent: "center",
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    flex: 1,
+  },
+  label: {
+    display: "none",
+    color: Color.textDefaultDefault,
+    lineHeight: 22,
+    textAlign: "left",
+    fontFamily: FontFamily.singleLineBodyBase,
+    fontSize: FontSize.m3TitleMedium_size,
+    alignSelf: "stretch",
+  },
+  description: {
+    color: Color.textDefaultSecondary,
+    alignSelf: "stretch",
+  },
+  input: {
+    borderRadius: 9999,
+    textTransform: "lowercase",
+    borderColor: Color.borderDefaultDefault,
+    textDecorationColor: "76ABAE",
+    borderWidth: 1,
+    minWidth: 240,
+    paddingVertical: StyleVariable.space3001,
+    paddingHorizontal: StyleVariable.space4001,
+    backgroundColor: Color.backgroundDefaultDefault,
+    overflow: "hidden",
+    borderStyle: "solid",
+    marginTop: 8,
+    fontFamily: FontFamily.singleLineBodyBase,
+    fontSize: FontSize.m3TitleMedium_size,
+    alignItems: "center",
+  },
+  error: {
+    color: Color.textDefaultDefault,
+  },
+  inputFieldTest2: {
+    alignSelf: "stretch",
+  },
+  label1: {
+    color: Color.textDefaultDefault,
+    lineHeight: 22,
+    textAlign: "left",
+    fontFamily: FontFamily.singleLineBodyBase,
+    fontSize: FontSize.m3TitleMedium_size,
+    alignSelf: "stretch",
+  },
+  input1: {
+    borderRadius: StyleVariable.radius2001,
+    flexDirection: "row",
+    alignSelf: "stretch",
+  },
+  inputFieldTest21: {
+    marginTop: 20,
+    alignSelf: "stretch",
   },
   starIcon: {
     display: "none",
   },
   button1: {
     lineHeight: 16,
-    fontFamily: FontFamily.singleLineBodyBase,
     color: Color.whiteA1,
-    textAlign: "left",
     marginLeft: 8,
+    textAlign: "left",
+    fontFamily: FontFamily.singleLineBodyBase,
     fontSize: FontSize.m3TitleMedium_size,
   },
   xIcon: {
@@ -127,10 +226,11 @@ const styles = StyleSheet.create({
     borderColor: Color.backgroundBrandDefault,
     padding: StyleVariable.space300,
     flexDirection: "row",
-    justifyContent: "center",
     overflow: "hidden",
     borderWidth: 1,
     borderStyle: "solid",
+    justifyContent: "center",
+    marginTop: 20,
   },
   iniciaSesinCon: {
     color: Color.textDefaultTertiary,
@@ -146,9 +246,8 @@ const styles = StyleSheet.create({
   stateLayer: {
     paddingHorizontal: Padding.p_xs,
     paddingVertical: Padding.p_3xs,
-    flexDirection: "row",
-    justifyContent: "center",
     flex: 1,
+    flexDirection: "row",
     alignSelf: "stretch",
   },
   container: {
@@ -177,12 +276,14 @@ const styles = StyleSheet.create({
     height: 90,
     paddingHorizontal: Padding.p_mini,
     paddingVertical: Padding.p_7xs,
+    marginTop: 20,
   },
   loginSocialNetworkFrame: {
     justifyContent: "flex-end",
+    paddingHorizontal: Padding.p_3xs,
     paddingTop: Padding.p_81xl,
     paddingBottom: Padding.p_31xl,
-    flex: 1,
+    marginTop: 20,
     alignSelf: "stretch",
   },
 });
