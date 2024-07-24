@@ -1,22 +1,21 @@
 /* fonts */
 export const FontFamily = {
-  m3TitleMedium: "Roboto-Medium",
-  m3BodyLarge: "Roboto-Regular",
-  singleLineBodyBase: "Inter-Regular",
+  m3TitleLarge: "Roboto-Regular",
+  bodyBase: "Inter-Regular",
+  m3LabelMedium: "Roboto-Medium",
 };
 /* font sizes */
 export const FontSize = {
-  m3LabelLarge_size: 14,
-  size_3xl: 22,
-  m3TitleMedium_size: 16,
+  m3TitleLarge_size: 22,
+  bodyBase_size: 16,
   m3HeadlineMedium_size: 28,
-  size_xs: 12,
+  m3LabelLarge_size: 14,
+  m3LabelMedium_size: 12,
 };
 /* Colors */
 export const Color = {
-  schemesPrimary: "#65558f",
   greenA2: "#9ec6c4",
-  whiteA1: "#f5f5f5",
+  wHITEF5: "#f5f5f5",
   backgroundWhite: "#f1efef",
   backgroundGreyA1: "#e9e9e9",
   greenA1: "#76abae",
@@ -30,6 +29,7 @@ export const Color = {
   backgroundDefaultDefault: "#fff",
   borderDefaultDefault: "#d9d9d9",
   textDefaultTertiary: "#b3b3b3",
+  schemesPrimary: "#65558f",
   blueA1: "#6f96c3",
   purpleA1: "#946fc3",
   gRAYC1: "#c1c1c1",
@@ -47,15 +47,16 @@ export const StyleVariable = {
   space4001: 16,
   space3001: 12,
   radius2001: 8,
+  radiusFull1: 9999,
 };
 /* Paddings */
 export const Padding = {
-  p_xs: 12,
-  p_3xs: 10,
   p_xl: 20,
   p_smi: 13,
+  p_3xs: 10,
   p_5xl: 24,
   p_base: 16,
+  p_xs: 12,
   p_11xl: 30,
   p_81xl: 100,
   p_31xl: 50,
@@ -66,12 +67,12 @@ export const Padding = {
   p_2xl: 21,
   p_8xs: 5,
   p_5xs: 8,
+  p_181xl: 200,
 };
 /* border radiuses */
 export const Border = {
-  br_81xl: 100,
   br_14xl: 33,
-  br_981xl: 1000,
+  br_81xl: 100,
   br_9980xl: 9999,
   br_3xs: 10,
   br_5xs: 8,

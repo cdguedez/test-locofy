@@ -87,17 +87,17 @@ const styles = StyleSheet.create({
   },
   labelTypo: {
     textAlign: "center",
-    fontFamily: FontFamily.m3TitleMedium,
+    fontFamily: FontFamily.m3LabelMedium,
     fontWeight: "500",
     lineHeight: 24,
     letterSpacing: 0,
-    fontSize: FontSize.m3TitleMedium_size,
+    fontSize: FontSize.bodyBase_size,
   },
   containerFlexBox: {
     borderWidth: 1,
     borderColor: Color.greenA1,
     borderStyle: "solid",
-    backgroundColor: Color.whiteA1,
+    backgroundColor: Color.wHITEF5,
     justifyContent: "center",
     alignSelf: "stretch",
     alignItems: "center",
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   seleccionaTuPerfil: {
     fontSize: FontSize.m3HeadlineMedium_size,
     lineHeight: 36,
-    fontFamily: FontFamily.m3BodyLarge,
+    fontFamily: FontFamily.m3TitleLarge,
     textAlign: "left",
     color: Color.greenA1,
   },
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   labelText2: {
-    color: Color.whiteA1,
+    color: Color.wHITEF5,
   },
   stateLayer2: {
     paddingHorizontal: Padding.p_5xl,

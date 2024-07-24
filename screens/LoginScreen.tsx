@@ -1,28 +1,35 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, View, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Text,
+  TextInput,
+  Pressable,
+  TouchableHighlight,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { TextInput as RNPTextInput, Button } from "react-native-paper";
 import FrameComponent from "../components/FrameComponent";
 import {
   FontFamily,
   FontSize,
+  Border,
+  StyleVariable,
   Color,
   Padding,
-  StyleVariable,
-  Border,
 } from "../GlobalStyles";
 
 const LoginScreen = () => {
   return (
-    <View style={[styles.testLoginScreen1, styles.loginFlexBox]}>
+    <View style={styles.testLoginScreen1}>
       <Image
         style={styles.klinikappCollage1Icon}
         contentFit="cover"
         source={require("../assets/klinikapp-collage-1.png")}
       />
       <LinearGradient
-        style={styles.spaceLogoFrame}
+        style={[styles.spaceLogoFrame, styles.frameFlexBox]}
         locations={[0.09, 0.47, 0.7]}
         colors={["#76abae", "rgba(118, 171, 174, 0)", "rgba(118, 171, 174, 0)"]}
       >
@@ -32,133 +39,183 @@ const LoginScreen = () => {
           source={require("../assets/klinikapp-logo-name.png")}
         />
       </LinearGradient>
-      <View style={[styles.loginBackgroundA1, styles.loginFlexBox]}>
+      <ScrollView
+        style={styles.loginBackgroundA1}
+        horizontal={false}
+        indicatorStyle="default"
+        showsVerticalScrollIndicator={true}
+        showsHorizontalScrollIndicator={true}
+        contentContainerStyle={styles.loginBackgroundA1Content}
+      >
         <Text style={styles.inicioDeSesin}>Inicio de Sesión</Text>
-        <View style={[styles.inputSelctFieldFrame, styles.inputSpaceBlock]}>
-          <RNPTextInput
-            style={styles.emailInputField}
-            mode="outlined"
-            placeholderTextColor="#b3b3b3"
-            outlineColor="#fff"
-            theme={{
-              fonts: {
-                regular: { fontFamily: "Roboto", fontWeight: "Medium" },
-              },
-              colors: { text: "#69a86c" },
-            }}
-          />
-          <View style={[styles.passwordInputField, styles.inputSpaceBlock]}>
-            <Text style={styles.label}>
-              Ingresa tu correo electrónico registrado:
-            </Text>
+        <View style={styles.inputSelctFieldFrame}>
+          <View>
+            <Text style={styles.label}>Label</Text>
             <Text style={[styles.description, styles.errorTypo]}>
               Description
             </Text>
-            <View style={[styles.input, styles.inputBorder]}>
-              <Text style={[styles.value, styles.valueClr]}>
-                Ingresa tu contraseña
-              </Text>
-            </View>
+            <TextInput
+              style={[styles.input, styles.inputLayout]}
+              placeholder="Ingresa tu correo electrónico"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              secureTextEntry={false}
+              placeholderTextColor="#b3b3b3"
+              autoFocus
+              textContentType="emailAddress"
+            />
+            <Text style={[styles.error, styles.errorTypo]}>Error</Text>
+          </View>
+          <View style={styles.inputField1}>
+            <Text style={styles.label}>Label</Text>
+            <Text style={[styles.description, styles.errorTypo]}>
+              Description
+            </Text>
+            <TextInput
+              style={[styles.input1, styles.inputLayout]}
+              placeholder="Ingresa tu contraseña"
+              keyboardType="default"
+              autoCapitalize="none"
+              secureTextEntry={true}
+              placeholderTextColor="#b3b3b3"
+              passwordRules="minlength: 12; required: upper; required: lower; required: digit; required: special;"
+              textContentType="password"
+            />
             <Text style={[styles.error, styles.errorTypo]}>Error</Text>
           </View>
         </View>
         <View style={[styles.loginButtonFrame, styles.frameSpaceBlock]}>
-          <Button
-            style={[styles.loginButtonA1, styles.buttonShadowBox]}
-            mode="contained"
-            labelStyle={styles.loginButtonA1Btn}
-            contentStyle={styles.loginButtonA1Btn1}
+          <TouchableHighlight
+            style={[styles.button, styles.buttonLayout]}
+            underlayColor="rgba(5, 87, 84, 0.7)"
+            activeOpacity={0.7}
+            onPress={() => {}}
           >
-            Iniciar Sesión
-          </Button>
-          <Button
-            style={[styles.recoveryPasswordButton, styles.buttonShadowBox]}
-            mode="text"
-            labelStyle={styles.recoveryPasswordButtonBtn}
-            contentStyle={styles.recoveryPasswordButtonBtn1}
+            <>
+              <Image
+                style={styles.starIcon}
+                contentFit="cover"
+                source={require("../assets/star1.png")}
+              />
+              <Text style={[styles.button1, styles.buttonFlexBox]}>
+                Iniciar Sesión
+              </Text>
+              <Image
+                style={styles.starIcon}
+                contentFit="cover"
+                source={require("../assets/x1.png")}
+              />
+            </>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={[styles.button2, styles.buttonLayout]}
+            underlayColor="rgba(214, 214, 214, 0.7)"
+            activeOpacity={0.7}
+            onPress={() => {}}
           >
-            Recordar Contraseña
-          </Button>
+            <>
+              <Image
+                style={styles.starIcon}
+                contentFit="cover"
+                source={require("../assets/star1.png")}
+              />
+              <Text style={[styles.button3, styles.buttonFlexBox]}>
+                Recordar Contraseña
+              </Text>
+              <Image
+                style={styles.starIcon}
+                contentFit="cover"
+                source={require("../assets/x1.png")}
+              />
+            </>
+          </TouchableHighlight>
         </View>
         <FrameComponent />
-        <View style={[styles.footerFrame, styles.frameSpaceBlock]}>
+        <View style={[styles.footerFrame, styles.footerFrameFlexBox]}>
           <Image
             style={styles.logoCloudIceIcon}
             contentFit="cover"
             source={require("../assets/logo-cloud-ice1.png")}
           />
           <Text
-            style={[styles.designedDeveloped, styles.valueClr]}
+            style={[styles.designedDeveloped, styles.footerFrameFlexBox]}
             numberOfLines={3}
           >{`Designed & Developed by The Cloud Solution LLC.
 Marketed in the Republic of Chile by The Cloud Solution SpA.
 Registered Trademark - All Rights Reserved.`}</Text>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  loginButtonA1Btn: {
-    color: "#f5f5f5",
-    fontSize: 22,
-    fontFamily: "Roboto-Regular",
+  loginBackgroundA1Content: {
+    flexDirection: "column",
+    paddingHorizontal: 20,
+    paddingVertical: 13,
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
-  loginButtonA1Btn1: {
-    borderRadius: 100,
-    height: 40,
-  },
-  recoveryPasswordButtonBtn: {
-    color: "#76abae",
-    fontSize: 12,
-    fontWeight: "500",
-    fontFamily: "Roboto-Medium",
-  },
-  recoveryPasswordButtonBtn1: {
-    borderRadius: 100,
-    height: 24,
-  },
-  loginFlexBox: {
-    overflow: "hidden",
+  frameFlexBox: {
+    alignSelf: "stretch",
     alignItems: "center",
   },
-  inputSpaceBlock: {
-    marginTop: 20,
-    alignSelf: "stretch",
-  },
   errorTypo: {
-    fontFamily: FontFamily.singleLineBodyBase,
-    lineHeight: 22,
     marginTop: 8,
     display: "none",
-    fontSize: FontSize.m3TitleMedium_size,
+    fontFamily: FontFamily.bodyBase,
+    lineHeight: 22,
+    fontSize: FontSize.bodyBase_size,
     textAlign: "left",
   },
-  inputBorder: {
-    borderWidth: 1,
+  inputLayout: {
     borderStyle: "solid",
-  },
-  valueClr: {
-    color: Color.textDefaultTertiary,
-    letterSpacing: 1,
-    textAlign: "left",
+    borderWidth: 1,
+    maxHeight: 40,
+    maxWidth: 500,
+    minWidth: 370,
+    minHeight: 40,
+    textTransform: "none",
+    borderRadius: Border.br_9980xl,
+    paddingVertical: StyleVariable.space3001,
+    paddingHorizontal: StyleVariable.space4001,
+    width: 371,
+    backgroundColor: Color.backgroundDefaultDefault,
+    flexDirection: "row",
+    marginTop: 8,
+    color: Color.textDefaultSecondary,
+    fontSize: FontSize.bodyBase_size,
+    fontFamily: FontFamily.m3TitleLarge,
+    alignItems: "center",
+    overflow: "hidden",
+    flex: 1,
   },
   frameSpaceBlock: {
     paddingVertical: Padding.p_3xs,
-    paddingHorizontal: 0,
     marginTop: 20,
     justifyContent: "center",
   },
-  buttonShadowBox: {
-    shadowOpacity: 1,
-    shadowOffset: {
-      width: 0,
-      height: 16,
-    },
-    shadowColor: "rgba(12, 12, 13, 0.1)",
-    justifyContent: "center",
+  buttonLayout: {
+    textAlign: "center",
+    minWidth: 145,
+    maxWidth: 370,
+    padding: StyleVariable.space2001,
+    justifyContent: "space-between",
+    borderRadius: StyleVariable.radiusFull1,
+    flexDirection: "row",
     alignItems: "center",
+    overflow: "hidden",
+    width: "100%",
+    flex: 1,
+  },
+  buttonFlexBox: {
+    textAlign: "center",
+    fontFamily: FontFamily.bodyBase,
+    flex: 1,
+  },
+  footerFrameFlexBox: {
+    alignItems: "flex-end",
     overflow: "hidden",
   },
   klinikappCollage1Icon: {
@@ -180,28 +237,20 @@ const styles = StyleSheet.create({
     paddingBottom: Padding.p_xl,
     backgroundColor: "transparent",
     zIndex: 1,
-    alignSelf: "stretch",
-    alignItems: "center",
   },
   inicioDeSesin: {
     fontSize: FontSize.m3HeadlineMedium_size,
     lineHeight: 36,
-    color: Color.greenA1,
     textAlign: "left",
-    fontFamily: FontFamily.m3BodyLarge,
-  },
-  emailInputField: {
-    width: 370,
-    borderRadius: StyleVariable.cornerFull,
+    color: Color.greenA1,
+    fontFamily: FontFamily.m3TitleLarge,
   },
   label: {
-    letterSpacing: 0,
-    color: Color.gRAY88,
     display: "none",
-    fontFamily: FontFamily.m3TitleMedium,
-    fontWeight: "500",
-    lineHeight: 24,
-    fontSize: FontSize.m3TitleMedium_size,
+    color: Color.textDefaultDefault,
+    fontFamily: FontFamily.bodyBase,
+    lineHeight: 22,
+    fontSize: FontSize.bodyBase_size,
     textAlign: "left",
     alignSelf: "stretch",
   },
@@ -210,53 +259,73 @@ const styles = StyleSheet.create({
     marginTop: 8,
     alignSelf: "stretch",
   },
-  value: {
-    color: Color.textDefaultTertiary,
-    letterSpacing: 1,
-    lineHeight: 24,
-    fontSize: FontSize.m3TitleMedium_size,
-    fontFamily: FontFamily.m3BodyLarge,
-    flex: 1,
-  },
   input: {
-    borderRadius: StyleVariable.radiusFull,
-    backgroundColor: Color.backgroundDefaultDefault,
-    borderColor: Color.borderDefaultDefault,
-    paddingHorizontal: StyleVariable.space400,
-    paddingVertical: StyleVariable.space300,
-    minWidth: 240,
-    flexDirection: "row",
-    marginTop: 8,
-    alignSelf: "stretch",
-    alignItems: "center",
-    overflow: "hidden",
+    borderColor: "#B3B3B3",
   },
   error: {
     color: Color.textDefaultDefault,
-    marginTop: 8,
   },
-  passwordInputField: {
-    borderRadius: StyleVariable.cornerFull,
+  input1: {
+    borderColor: "#b3b3b3",
+    textShadowColor: "76abae",
+    borderBottomWidth: null,
+  },
+  inputField1: {
+    marginTop: 20,
   },
   inputSelctFieldFrame: {
     padding: Padding.p_3xs,
-    justifyContent: "center",
     marginTop: 20,
+    justifyContent: "center",
+    alignSelf: "stretch",
     alignItems: "center",
   },
-  loginButtonA1: {
-    shadowRadius: 32,
-    elevation: 32,
+  starIcon: {
+    width: 16,
+    height: 16,
+    display: "none",
+    overflow: "hidden",
   },
-  recoveryPasswordButton: {
-    shadowRadius: 4,
-    elevation: 4,
-    borderColor: Color.greenA1,
+  button1: {
+    fontSize: 20,
+    lineHeight: 20,
+    color: Color.wHITEF5,
+  },
+  button: {
+    backgroundColor: "#76ABAE",
+    maxHeight: 40,
+    minHeight: 40,
+    color: "#FFFFFF",
+    textAlign: "center",
+    minWidth: 145,
+    maxWidth: 370,
+    padding: StyleVariable.space2001,
+    justifyContent: "space-between",
+    borderRadius: StyleVariable.radiusFull1,
+  },
+  button3: {
+    fontSize: FontSize.m3LabelLarge_size,
+    lineHeight: 14,
+    color: Color.greenA1,
+  },
+  button2: {
+    borderColor: "#76ABAE",
+    minHeight: 24,
+    maxHeight: 24,
+    color: "#76ABAE",
     marginTop: 10,
+    textAlign: "center",
+    minWidth: 145,
+    maxWidth: 370,
+    padding: StyleVariable.space2001,
+    justifyContent: "space-between",
+    borderRadius: StyleVariable.radiusFull1,
     borderWidth: 1,
     borderStyle: "solid",
+    backgroundColor: Color.backgroundWhite,
   },
   loginButtonFrame: {
+    paddingHorizontal: Padding.p_81xl,
     alignSelf: "stretch",
     alignItems: "center",
   },
@@ -266,38 +335,40 @@ const styles = StyleSheet.create({
   },
   designedDeveloped: {
     fontSize: 7,
+    letterSpacing: 1,
     lineHeight: 12,
+    fontWeight: "500",
+    fontFamily: FontFamily.m3LabelMedium,
+    color: Color.textDefaultTertiary,
     display: "flex",
     width: 225,
     marginLeft: 20,
-    alignItems: "flex-end",
-    fontFamily: FontFamily.m3TitleMedium,
-    fontWeight: "500",
-    color: Color.textDefaultTertiary,
-    letterSpacing: 1,
-    overflow: "hidden",
+    textAlign: "left",
   },
   footerFrame: {
     width: 390,
     flexWrap: "wrap",
-    alignItems: "flex-end",
+    paddingHorizontal: 0,
+    paddingVertical: Padding.p_3xs,
+    marginTop: 20,
+    justifyContent: "center",
     flexDirection: "row",
+    alignItems: "flex-end",
   },
   loginBackgroundA1: {
     borderTopLeftRadius: Border.br_14xl,
     borderTopRightRadius: Border.br_14xl,
-    backgroundColor: Color.backgroundWhite,
-    height: 813,
-    paddingHorizontal: Padding.p_xl,
-    paddingVertical: Padding.p_smi,
     zIndex: 2,
+    backgroundColor: Color.backgroundWhite,
     alignSelf: "stretch",
-    alignItems: "center",
+    overflow: "hidden",
+    flex: 1,
   },
   testLoginScreen1: {
     backgroundColor: Color.greenA2,
-    width: "100%",
+    height: 932,
     alignItems: "center",
+    width: "100%",
     flex: 1,
     overflow: "hidden",
   },
